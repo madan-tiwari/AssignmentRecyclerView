@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    List list = new ArrayList();
     EditText etName, etAge;
     RadioButton rdoMale, rdoFemale, rdoOthers;
     Button btnSave;
@@ -52,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         spnImage = findViewById(R.id.spinnerImage);
         recycler = findViewById(R.id.recycler);
 
+        DataAdapter dataAdapter = new DataAdapter(this, list);
+        recycler.setAdapter(dataAdapter);
+        recycler.setLayoutManager(new LinearLayoutManager(this));
         ArrayAdapter arrayAdapter = new ArrayAdapter(
                 this,
                 android.R.layout.simple_list_item_1,
